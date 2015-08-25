@@ -60,4 +60,22 @@ public class Doctor {
         return Doctor;
     }
   }
+
+  public void update(int specialty_id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE doctors SET specialty_id = :specialty_id WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("specialty_id", specialty_id)
+        .addParameter("id", id)
+        .executeUpdate();
+    }
+  }
+  public void delete() {
+  try(Connection con = DB.sql2o.open()) {
+  String sql = "DELETE FROM tasks WHERE id = :id;";
+    con.createQuery(sql)
+      .addParameter("id", id)
+      .executeUpdate();
+  }
+ }
 }

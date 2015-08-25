@@ -67,4 +67,41 @@ public class Patient {
         return patient;
     }
   }
+
+
+  public void updateDoctor_id(int doctor_id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE patients SET doctor_id = :doctor_id WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("doctor_id", doctor_id)
+        .addParameter("id", id)
+        .executeUpdate();
+      }
+    }
+  public void updateName(String name) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE patients SET name = :name WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("name", name)
+        .addParameter("id", id)
+        .executeUpdate();
+      }
+    }
+  public void updateBirthday(String name) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE patients SET birthday = :birthday WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("birthday", birthday)
+        .addParameter("id", id)
+        .executeUpdate();
+        }
+    }
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+    String sql = "DELETE FROM tasks WHERE id = :id;";
+    con.createQuery(sql)
+      .addParameter("id", id)
+      .executeUpdate();
+  }
+}
 }
