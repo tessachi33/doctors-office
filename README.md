@@ -1,7 +1,7 @@
 
-# _Java App Template_
+# _Doctor's Office_
 
-_Description: A template for creating an app using Java. Template uses gradle to download all necessary dependencies._
+_Description: An app that tracks which patients are assigned to which doctor_
 _JUnit and FluentLenium are used for testing. Velocity is used to created web page templates. Spark is used to run the_
 _program on a local server._
 
@@ -18,4 +18,4 @@ _program on a local server._
 
 ## License
 
-_Author: Yelena Belikova_
+_Author: Yelena Belikova & Teresa Fletcher_
