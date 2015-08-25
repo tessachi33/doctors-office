@@ -7,13 +7,13 @@ public class Patient {
   public int doctor_id;
   public String birthday;
 
-  public getName() {
+  public String getName() {
     return name;
   }
-  public getDoctor_id() {
+  public int getDoctor_id() {
     return doctor_id;
   }
-  public getBirthday() {
+  public String getBirthday() {
     return birthday;
   }
   //constructor method, initializes an instance of Task
@@ -22,4 +22,11 @@ public class Patient {
     this.doctor_id = doctor_id;
     this.birthday = birthday;
   }
-  
+  //returns all instances of Patient objects in the list
+  public static List<Patient> all() {
+    String sql = "SELECT name, doctor_id, birthday FROM patients";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Patient.class);
+    }
+  }
+}
