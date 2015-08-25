@@ -17,11 +17,9 @@ public class Patient {
   public String getBirthday() {
     return birthday;
   }
-
   public int getId() {
     return id;
   }
-
   //constructor method, initializes an instance of Task
   public Patient(String name, String birthday, int doctor_id) {
     this.name = name;
@@ -45,7 +43,6 @@ public class Patient {
       return this.getName().equals(newPatient.getName()) &&
         this.getBirthday().equals(newPatient.getBirthday()) &&
         this.getDoctor_id() == newPatient.getDoctor_id();
-
     }
   }
   //saves a Patient into the db and saves the id of where the Patient was saved
@@ -64,11 +61,10 @@ public class Patient {
   public static Patient find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM patients WHERE id=:id";
-      Patient Patient = con.createQuery(sql)
+      Patient patient = con.createQuery(sql)
         .addParameter("id", id)
         .executeAndFetchFirst(Patient.class);
-        return Patient;
+        return patient;
     }
   }
-
 }
