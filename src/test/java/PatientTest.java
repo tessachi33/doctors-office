@@ -24,4 +24,12 @@ public class PatientTest {
     myPatient.save();
     assertTrue(Patient.all().get(0).equals(myPatient));
   }
+
+  @Test
+  public void find_findPatientInDatabase_true() {
+    Patient myPatient = new Patient("Jack", "feb", 1);
+    myPatient.save();
+    Patient savedPatient = Patient.find(myPatient.getId());
+    assertTrue(myPatient.equals(savedPatient));
+  }
 }
