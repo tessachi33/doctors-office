@@ -1,21 +1,26 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2>Patients</h2>
-    <form action="/patients">
-      <button class="btn btn-default" type="submit">View Patients</button>
-    </form>
-    <form action="/patients/new">
-      <button class="btn btn-default" type="submit">Add Patient</button>
-    </form>
-  </div>
+<!-- <link rel='stylesheet' href='../css/index.css' type="text/css"> -->
 
-  <div class="col-md-6">
-    <h2>Doctors</h2>
-    <form action="/doctors">
-      <button class="btn btn-default" type="submit">View Doctors</button>
-    </form>
-    <form action="/doctors/new">
-      <button class="btn btn-default" type="submit">Add Doctors</button>
-    </form>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 border-col">
+      <h2>Patients</h2>
+      <form action="/patients">
+        <button class="btn btn-default" type="submit">View Patients</button>
+      </form>
+      <br>
+      <form action="/patients/new/specialties">
+        <button class="btn btn-default" type="submit">Add Patient</button>
+      </form>
+      </div>
+      <div class="col-md-6">
+        <h2>Doctors</h2>
+        <form action="/doctors">
+          <button class="btn btn-default" type="submit">View Doctors</button>
+        </form>
+        <br>
+        <form action="/doctors/new">
+          <button class="btn btn-default" type="submit">Add Doctors</button>
+        </form>
+      </div>
+    </div>
 </div>

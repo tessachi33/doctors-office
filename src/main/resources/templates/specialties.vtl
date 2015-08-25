@@ -1,0 +1,13 @@
+<h2>Specialties</h2>
+<form action='/patients' method="get">
+    #foreach ($specialty in $specialties)
+      #if ($specialties.size() == 0)
+        <p>No specialties chosen</p>
+      #else
+      <div class="form-group">
+        <label form_id="$specialty.getName()">$specialty.getName()</label>
+        <input id="$specialty.getName()" value="$specialty.getId()" name="$specialty.getName()" class="form-control" type="radio">
+      </div>
+      #end
+    #end
+</form>
