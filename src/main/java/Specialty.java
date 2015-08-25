@@ -13,49 +13,44 @@ public class Specialty {
      return id;
      }
    //constructor method, initializes an instance of Doctor
-   public Specialty(String name, int id) {
+   public Specialty(String name) {
     this.name = name;
-    this.id = id;
   }
-  // //returns all instances of Patient objects in the list
-  // public static List<Patient> all() {
-  //   String sql = "SELECT name, doctor_id, birthday FROM patients";
-  //   try(Connection con = DB.sql2o.open()) {
-  //     return con.createQuery(sql).executeAndFetch(Patient.class);
-  //   }
-  // }
-  // //Overides equals method to check if two objects are equal
-  // @Override
-  // public boolean equals(Object otherPatient){
-  //   if(!(otherPatient instanceof Patient)) {
-  //     return false;
-  //   } else {
-  //     Patient newPatient = (Patient) otherPatient;
-  //     return this.getName().equals(newPatient.getName()) &&
-  //       this.getBirthday().equals(newPatient.getBirthday()) &&
-  //       this.getDoctor_id() == newPatient.getDoctor_id();
-  //   }
-  // }
-  // //saves a Patient into the db and saves the id of where the Patient was saved
-  // public void save() {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "INSERT INTO patients (name, birthday, doctor_id) VALUES (:name, :birthday, :doctor_id)";
-  //     this.id = (int) con.createQuery(sql, true)
-  //     .addParameter("name", this.name)
-  //     .addParameter("birthday", this.birthday)
-  //     .addParameter("doctor_id", this.doctor_id)
-  //     .executeUpdate()
-  //     .getKey();
-  //   }
-  // }
-  // //finds a Patient object in the fb using the id, returns the Patient object
-  // public static Patient find(int id) {
-  //   try(Connection con = DB.sql2o.open()) {
-  //     String sql = "SELECT * FROM patients WHERE id=:id";
-  //     Patient patient = con.createQuery(sql)
-  //       .addParameter("id", id)
-  //       .executeAndFetchFirst(Patient.class);
-  //       return patient;
-  //   }
-  // }
+  // returns all instances of Specialty objects in the list
+    public static List<Specialty> all() {
+     String sql = "SELECT name FROM specialties";
+      try(Connection con = DB.sql2o.open()) {
+       return con.createQuery(sql).executeAndFetch(Specialty.class);
+    }
+  }
+  //Overides equals method to check if two objects are equal
+  @Override
+  public boolean equals(Object otherSpecialty) {
+    if(!(otherSpecialty instanceof Specialty)) {
+      return false;
+    } else {
+      Specialty newSpecialty = (Specialty) otherSpecialty;
+      return this.getName().equals(newSpecialty.getName());
+    }
+  }
+  //saves a specialty into the db and saves the id of where the specialty was saved
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO specialties (name) VALUES (:name)";
+      this.id = (int) con.createQuery(sql, true)
+      .addParameter("name", this.name)
+      .executeUpdate()
+      .getKey();
+    }
+  }
+  //finds a specialty object in the fb using the id, returns the specialty object
+  public static Specialty find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM specialties WHERE id=:id";
+      Specialty specialty = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Specialty.class);
+        return specialty;
+    }
+  }
 }
