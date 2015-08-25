@@ -1,13 +1,16 @@
 <h2>Specialties</h2>
 <form action='/patients' method="get">
     #foreach ($specialty in $specialties)
+    <fieldset>
       #if ($specialties.size() == 0)
         <p>No specialties chosen</p>
       #else
-      <div class="form-group">
-        <label form_id="$specialty.getName()">$specialty.getName()</label>
-        <input id="$specialty.getName()" value="$specialty.getId()" name="$specialty.getName()" class="form-control" type="radio">
-      </div>
+        <div class="form-group">
+          <label form_id="$specialty.getName()">$specialty.getName()</label>
+          <input id="$specialty.getName()" value="$specialty.getId()" name="$specialty.getName()" class="form-control" type="radio">
+        </div>
       #end
+    </fieldset>
     #end
+    <button  type="submit" class="btn"> Submit</button>
 </form>

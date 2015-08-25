@@ -27,7 +27,14 @@ public class App{
    get("/patients/new/specialties", (request, response) -> {
      HashMap<String, Object> model = new HashMap<String, Object>();
      model.put("template", "templates/specialties.vtl");
+     Specialty spec1 = new Specialty("broken heart");
+     spec1.save();
+     Specialty spec2 = new Specialty("nose, ear, throat");
+     spec2.save();
+     Specialty spec3 = new Specialty("liver");
+     spec3.save();
      model.put("specialties", Specialty.all());
+
 
      return new ModelAndView(model, layout);
    }, new VelocityTemplateEngine());
