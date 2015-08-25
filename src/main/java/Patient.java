@@ -3,9 +3,10 @@ import org.sql2o.*;
 
 public class Patient {
 
-  public String name;
-  public int doctor_id;
-  public String birthday;
+  private int id;
+  private String name;
+  private int doctor_id;
+  private String birthday;
 
   public String getName() {
     return name;
@@ -16,6 +17,11 @@ public class Patient {
   public String getBirthday() {
     return birthday;
   }
+
+  public int getId() {
+    return id;
+  }
+
   //constructor method, initializes an instance of Task
   public Patient(String name, String birthday, int doctor_id) {
     this.name = name;
@@ -40,6 +46,17 @@ public class Patient {
         this.getBirthday().equals(newPatient.getBirthday()) &&
         this.getDoctor_id() == newPatient.getDoctor_id();
 
+    }
+  }
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO patients (name, birthday, doctor_id) VALUES (:name, :birthday, :doctor_id)";
+      this.id = (int) con.createQuery(sql, true)
+      .addParameter("name", this.name)
+      .addParameter("birthday", this.birthday)
+      .addParameter("doctor_id", this.doctor_id)
+      .executeUpdate()
+      .getKey();
     }
   }
 }
