@@ -17,4 +17,11 @@ public class PatientTest {
     Patient secondPatient = new Patient("Jack", "feb", 1);
     assertTrue(firstPatient.equals(secondPatient));
   }
+
+  @Test
+  public void save_savesIntoDatabase_true() {
+    Patient myPatient = new Patient("Jack", "feb", 1);
+    myPatient.save();
+    assertTrue(Patient.all().get(0).equals(myPatient));
+  }
 }
