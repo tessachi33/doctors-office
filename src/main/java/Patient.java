@@ -48,6 +48,7 @@ public class Patient {
 
     }
   }
+  //saves a Patient into the db and saves the id of where the Patient was saved
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO patients (name, birthday, doctor_id) VALUES (:name, :birthday, :doctor_id)";
@@ -59,7 +60,7 @@ public class Patient {
       .getKey();
     }
   }
-
+  //finds a Patient object in the fb using the id, returns the Patient object
   public static Patient find(int id) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "SELECT * FROM patients WHERE id=:id";
